@@ -7,7 +7,7 @@ namespace EMS.Actions
     public class Action : Entity<int>
     {
         #region Constructors
-        private Action() { }
+        internal Action() { }
 
         internal Action(string name, int price, string description, ActionType type)
         {

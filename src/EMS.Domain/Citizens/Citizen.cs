@@ -8,7 +8,7 @@ namespace EMS.Citizens
     public class Citizen : Entity<int>, ISoftDelete
 
     {
-        private Citizen()
+        internal Citizen()
         {
 
         }
