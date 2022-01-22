@@ -13,7 +13,7 @@ namespace EMS.Citizens
 
         }
 
-        internal Citizen(string name,string surname,decimal size,decimal weight,DateOnly birthDate, string jobName,  int phoneNumber, BloodType bloodType, bool isDoingDrug = false, bool haveInsurance = false)
+        public Citizen(string name,string surname,decimal size,decimal weight,DateOnly birthDate, string jobName,  int phoneNumber, BloodType bloodType, bool isDoingDrug = false, bool haveInsurance = false)
         {
             this.Name = name;
             this.Surname = surname;

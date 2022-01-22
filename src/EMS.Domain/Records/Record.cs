@@ -7,9 +7,9 @@ namespace EMS.Records
     public class Record : Entity<int>
     {
         #region Constructors
-        internal Record() { }
+        private Record() { }
 
-        internal Record(List<Action> actions, int idCareStaff, int idCitizen, DateTime? created = null)
+        public Record(List<Action> actions, int idCareStaff, int idCitizen, DateTime? created = null)
         {
             this.Actions = actions;
             this.IdCareStaff = idCareStaff;

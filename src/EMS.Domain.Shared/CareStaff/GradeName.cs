@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EMS.CareStaff
+namespace EMS.CareStaffs
 {
     public enum GradeName
     {

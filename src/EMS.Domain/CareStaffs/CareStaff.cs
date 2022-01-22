@@ -8,6 +8,9 @@ namespace EMS.CareStaffs
     {
         private Grade Grade { get; set; }
 
+        public CareStaff() { }
+
+
         public CareStaff(string name, string surname, decimal size, decimal weight, 
                             DateOnly birthDate, string jobName, int phoneNumber, BloodType bloodType, 
                             Grade grade, bool isDoingDrug = false, bool haveInsurance = false) 
