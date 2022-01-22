@@ -9,5 +9,10 @@ namespace EMS
         public const string CitizenWeightMustBeGreaterThanZero = "EMS:1002";
         public const string CitizenDoNotExist = "EMS:1003";
         #endregion
+
+        #region Action
+        public const string ActionPriceMustBeGreaterThanZero = "EMS:2001";
+        public const string ActionAlreadyExist = "EMS:2002";
+        #endregion
     }
 }
