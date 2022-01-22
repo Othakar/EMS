@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EMS.Actions;
+using EMS.CareStaffs;
+using EMS.Citizens;
+using EMS.Records;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -24,7 +28,10 @@ public class EMSDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
-
+    public DbSet<Citizen> Citizens { get; set; }
+    public DbSet<CareStaff> CareStaffs { get; set; }
+    public DbSet<Action> Actions { get; set; }
+    public DbSet<Record> Records { get; set; }
     #region Entities from the modules
 
     /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
