@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMS.Acts;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
@@ -14,9 +15,9 @@ namespace EMS.Records
             _recordRepository = recordRepository;
         }
 
-        public virtual async Task<Record> Create(List<Action> actions, int idCareStaff, int idCitizen, DateTime? created = null)
+        public virtual async Task<Record> Create(List<Act> acts, int idCareStaff, int idCitizen, DateTime? created = null)
         {
-            var newRecord = new Record(actions, idCareStaff, idCitizen, created);
+            var newRecord = new Record(acts, idCareStaff, idCitizen, created);
             return await _recordRepository.InsertAsync(newRecord);
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EMS.Acts;
+using System;
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities;
 
@@ -9,9 +10,9 @@ namespace EMS.Records
         #region Constructors
         private Record() { }
 
-        public Record(List<Action> actions, int idCareStaff, int idCitizen, DateTime? created = null)
+        public Record(List<Act> acts, int idCareStaff, int idCitizen, DateTime? created = null)
         {
-            this.Actions = actions;
+            this.Acts = acts;
             this.IdCareStaff = idCareStaff;
             this.IdCitizen = idCitizen;
             this.SetDate(created);
@@ -21,10 +22,11 @@ namespace EMS.Records
         #endregion
 
         #region Properties
-        public List<Action> Actions { get; private set; }
+        public List<Act> Acts { get; private set; }
         public DateTime Created { get; private set; }
         public int IdCareStaff { get; private set; }
         public int IdCitizen { get; private set; }
+
         #endregion
 
         #region Setters
