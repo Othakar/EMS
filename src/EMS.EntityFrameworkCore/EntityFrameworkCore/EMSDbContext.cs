@@ -1,4 +1,4 @@
-﻿using EMS.Actions;
+﻿using EMS.Acts;
 using EMS.CareStaffs;
 using EMS.Citizens;
 using EMS.Records;
@@ -30,7 +30,7 @@ public class EMSDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Citizen> Citizens { get; set; }
     public DbSet<CareStaff> CareStaffs { get; set; }
-    public DbSet<Action> Actions { get; set; }
+    public DbSet<Act> Actions { get; set; }
     public DbSet<Record> Records { get; set; }
     #region Entities from the modules
 

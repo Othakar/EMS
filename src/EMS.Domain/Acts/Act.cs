@@ -2,15 +2,15 @@
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
-namespace EMS.Actions
+namespace EMS.Acts
 {
-    public class Action : Entity<int>, ISoftDelete
+    public class Act : Entity<int>, ISoftDelete
     {
         #region Constructors
-        private Action() {
+        private Act() {
         }
 
-        public Action(string name, int price, string description, ActionType type)
+        public Act(string name, int price, string description, ActType type)
         {
             Name = name;
             this.SetPrice(price);
@@ -30,7 +30,7 @@ namespace EMS.Actions
         public string Description { get; private set; }
 
         [Required]
-        public ActionType Type { get; private set; }
+        public ActType Type { get; private set; }
         public bool IsDeleted { get; set; }
 
         #endregion
