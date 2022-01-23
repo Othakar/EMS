@@ -1,22 +1,22 @@
-﻿using EMS.Citizens;
-using System;
-using Volo.Abp;
+﻿using Volo.Abp;
+using Volo.Abp.Domain.Entities;
 
 namespace EMS.CareStaffs
 {
-    public class CareStaff : Citizen, ISoftDelete
+    public class CareStaff : Entity<int>, ISoftDelete
     {
-        private Grade Grade { get; set; }
+        public Grade Grade { get; private set; }
 
-        public CareStaff() { }
+        public int CitizenId { get; private set; }
 
+        public bool IsDeleted { get;  set;}
 
-        public CareStaff(string name, string surname, decimal size, decimal weight, 
-                            DateOnly birthDate, string jobName, int phoneNumber, BloodType bloodType, 
-                            Grade grade, bool isDoingDrug = false, bool haveInsurance = false) 
-            : base(name, surname, size, weight, birthDate, jobName, phoneNumber, bloodType)
+        private CareStaff() { }
+
+        public CareStaff(Grade grade, int citizenId)
         {
             this.Grade = grade;
+            this.CitizenId = citizenId;
         }
     }
 }

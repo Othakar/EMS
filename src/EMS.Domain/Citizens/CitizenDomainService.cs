@@ -52,7 +52,7 @@ namespace EMS.Citizens
             var existingCitizen = await _citizenRepository.FirstOrDefaultAsync(c => c.Name == name && c.Surname == surname);
             if (existingCitizen == null)
             {
-                throw new BusinessException(EMSErrorCodes.CitizenDoNotExist);
+                throw new BusinessException(EMSErrorCodes.CitizenDoesNotExist);
             }
             existingCitizen = new Citizen(name, surname, size, weight, birthDate, jobName, phoneNumber, bloodType, isDoingDrug, haveInsurance);
             return await _citizenRepository.UpdateAsync(existingCitizen);
