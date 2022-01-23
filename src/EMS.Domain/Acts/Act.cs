@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EMS.Records;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
@@ -31,6 +33,12 @@ namespace EMS.Acts
 
         [Required]
         public ActType Type { get; private set; }
+
+        [ForeignKey("ActRecord")]
+        public int RecordId { get; private set; }
+
+        public Record ActRecord { get; private set; }
+        
         public bool IsDeleted { get; set; }
 
         #endregion

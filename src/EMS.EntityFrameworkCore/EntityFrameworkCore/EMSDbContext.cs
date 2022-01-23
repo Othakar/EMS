@@ -8,6 +8,7 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -82,11 +83,38 @@ public class EMSDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(EMSConsts.DbTablePrefix + "YourEntities", EMSConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Citizen>(c =>
+        {
+            c.ToTable(EMSConsts.DbTablePrefix + "Citizens", EMSConsts.DbSchema);
+            c.ConfigureByConvention();
+        });
+
+        builder.Entity<CareStaff>(c =>
+        {
+            c.ToTable(EMSConsts.DbTablePrefix + "CareStaffs", EMSConsts.DbSchema);
+            c.HasOne(c => c.Citizen).WithMany().HasForeignKey(e => e.CitizenId);
+            c.ConfigureByConvention();
+        });
+
+        builder.Entity<Act>(a =>
+        {
+            a.ToTable(EMSConsts.DbTablePrefix + "Acts", EMSConsts.DbSchema);
+            a.HasOne(r => r.ActRecord).WithMany(d => d.Acts).HasForeignKey(e => e.RecordId);
+            a.ConfigureByConvention();
+        });
+
+        builder.Entity<Record>(r =>
+        {
+            r.ToTable(EMSConsts.DbTablePrefix + "Records", EMSConsts.DbSchema);
+            r.HasOne(c => c.Caregiver).WithMany().HasForeignKey(e => e.IdCareStaff);
+            r.HasOne(c => c.CareFor).WithMany().HasForeignKey(e => e.IdCitizen);
+            r.ConfigureByConvention();
+        });
+
+        builder.Entity<Grade>(r =>
+        {
+        r.ToTable(EMSConsts.DbTablePrefix + "Grades", EMSConsts.DbSchema);
+        r.ConfigureByConvention();
+    });
     }
 }

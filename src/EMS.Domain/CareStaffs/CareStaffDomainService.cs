@@ -25,7 +25,7 @@ namespace EMS.CareStaffs
             {
                 throw new BusinessException(EMSErrorCodes.CareStaffCitizenDoesNotExist);
             }
-            var newCareStaff = new CareStaff(grade, citizenId);
+            var newCareStaff = new CareStaff(grade, citizen);
             return await _careStaffRepository.InsertAsync(newCareStaff);
         }
     }

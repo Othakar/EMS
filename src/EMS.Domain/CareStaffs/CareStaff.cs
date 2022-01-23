@@ -1,22 +1,29 @@
-﻿using Volo.Abp;
+﻿using EMS.Citizens;
+using System.ComponentModel.DataAnnotations.Schema;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
 namespace EMS.CareStaffs
 {
     public class CareStaff : Entity<int>, ISoftDelete
     {
+        public int GradeId { get;private set; }
         public Grade Grade { get; private set; }
 
+        [ForeignKey("Citizen")]
         public int CitizenId { get; private set; }
 
-        public bool IsDeleted { get;  set;}
+        public bool IsDeleted { get; set; }
 
-        private CareStaff() { }
+        public Citizen Citizen{ get; set; }
 
-        public CareStaff(Grade grade, int citizenId)
-        {
-            this.Grade = grade;
-            this.CitizenId = citizenId;
-        }
+    private CareStaff() { }
+
+    public CareStaff(Grade grade, Citizen citizen)
+    {
+        this.Grade = grade;
+        this.Citizen = citizen;
+        this.CitizenId = citizen.Id;
     }
+}
 }

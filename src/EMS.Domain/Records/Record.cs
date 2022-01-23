@@ -1,6 +1,9 @@
 ﻿using EMS.Acts;
+using EMS.CareStaffs;
+using EMS.Citizens;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Volo.Abp.Domain.Entities;
 
 namespace EMS.Records
@@ -23,10 +26,16 @@ namespace EMS.Records
 
         #region Properties
         public List<Act> Acts { get; private set; }
-        public DateTime Created { get; private set; }
-        public int IdCareStaff { get; private set; }
-        public int IdCitizen { get; private set; }
 
+        public DateTime Created { get; private set; }
+
+        [ForeignKey("Caregiver")]
+        public int IdCareStaff { get; private set;}
+        public CareStaff Caregiver { get; private set;  }
+
+        [ForeignKey("CareFor")]
+        public int IdCitizen { get; private set; }
+        public Citizen CareFor { get; private set; }
         #endregion
 
         #region Setters
